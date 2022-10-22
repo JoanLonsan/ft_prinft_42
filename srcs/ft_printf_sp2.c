@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf_sp2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/02 21:54:49 by marvin            #+#    #+#             */
-/*   Updated: 2022/10/02 21:54:49 by marvin           ###   ########.fr       */
+/*   Created: 2022/10/20 03:34:22 by marvin            #+#    #+#             */
+/*   Updated: 2022/10/20 03:34:22 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-#define FT_PRINTF_H
-#include "../libft/libft.h"
-#include <stdarg.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include "ft_printf.h"
 
-typedef struct  s_printf
+void	ft_sp_p(t_printf *tab, int *pointer)
 {
-    int     width;
-    char    zero;
-    char    point;
-    char    dash;
-    int     tlen;
-    char    sign;
-    char    porc;
-    char    space;
-    va_list args;
-}               t_printf;
+	char	*hexa;
+    char    *address;
 
-int     ft_printf(const char *, ...);
+    hexa = "0123456789ABCDEF";
+    address = &pointer;
+	if ((void *)pointer == NULL)
+		ft_putstr_fd(POINTER_NULL, 1);
+	tab->tlen += write(1, hexa[address], 1);
+	else
+	{
+		ft_putstr("0x", pointer);
 
-#endif
+		ft_putnbr_base_ul(address, "0123456789abcdef", pointer);
+	}
+}
