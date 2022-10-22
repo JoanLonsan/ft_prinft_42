@@ -6,7 +6,7 @@
 /*   By: jcrescen <jcrescen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 16:21:21 by jcrescen          #+#    #+#             */
-/*   Updated: 2022/09/29 12:17:10 by jcrescen         ###   ########.fr       */
+/*   Updated: 2022/10/22 14:01:07 by jcrescen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 # include <stdlib.h>
 # include <ctype.h>
 # include <string.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
 
 typedef struct s_list
 {
@@ -68,5 +72,6 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+char	*get_next_line(int fd);
 
 #endif

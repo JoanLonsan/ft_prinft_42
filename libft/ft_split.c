@@ -50,10 +50,7 @@ char	**ft_split(const char *s, char c)
 	i = 0;
 	a = malloc(sizeof(char *) * (ft_word_len(s, c) + 1));
 	if (!a)
-	{
-		ft_free_split(a);
-		return (NULL);
-	}
+		return (0);
 	while (*s)
 	{
 		if (*s != c)
@@ -62,6 +59,8 @@ char	**ft_split(const char *s, char c)
 			while (*s && *s != c && len++ >= 0)
 				++s;
 			a[i++] = ft_substr(s - len, 0, len);
+			if (!a[i - 1])
+				ft_free_split(a);
 		}
 		else
 			++s;

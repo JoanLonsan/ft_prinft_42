@@ -3,24 +3,25 @@ N_TEMP		= temp.a
 NAME		= libftprintf.a
 CC			= gcc
 CFLAGS		= -c -Wall -Wextra -Werror
-INCLUDES	= -I./includes
+INCLUDES	= -I ./includes
 RM			= rm -rf
-AR			= ar -rcs
-SRCS		=  ft_printf.c 
+AR			= ar rcs
+SRCS		= ft_printf.c \
+				./srcs/ft_printf_sp1.c \
+				./srcs/ft_printf_sp2.c
 
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(MAKE) bonus -C ./libft
+	$(MAKE) -C ./libft
 	cp libft/libft.a $(NAME)
 	$(CC) $(CFLAGS) $(INCLUDES) $(SRCS)
 	$(AR) $(NAME) $(OBJS)
 
 clean:
 	$(MAKE) clean -C ./libft
-	$(RM) $(SURPL_O) 
 	$(RM) $(OBJS)
 
 fclean: clean

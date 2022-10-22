@@ -11,25 +11,18 @@
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
-#define FT_PRINTF_H
-#include "../libft/libft.h"
-#include <stdarg.h>
-#include <stdlib.h>
-#include <unistd.h>
+# define FT_PRINTF_H
+# include "../libft/libft.h"
+# include <stdarg.h>
+# include <stdlib.h>
+# include <unistd.h>
 
-typedef struct  s_printf
-{
-    int     width;
-    char    zero;
-    char    point;
-    char    dash;
-    int     tlen;
-    char    sign;
-    char    porc;
-    char    space;
-    va_list args;
-}               t_printf;
-
-int     ft_printf(const char *, ...);
+int		ft_printf(const char *, ...);
+int		ft_sp_c(char *c);
+int		ft_sp_i_or_d(int digit);
+int		ft_sp_u(int digit);
+int		ft_sp_x(char str, int digit);
+int		ft_sp_p(char *pointer);
+int		ft_sp_s(char *str);
 
 #endif

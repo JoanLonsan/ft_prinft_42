@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 /*  En esta función entra la posición str + 1, siendo str el %. Por lo que entra el siguiente car. del activador, pudiendo ser:
     Una flag, el width, o el especificador.
