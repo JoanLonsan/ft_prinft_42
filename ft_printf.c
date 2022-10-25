@@ -21,7 +21,7 @@ int	ft_lfsp_str(char *str, int len, va_list args)
 		else if (*str == 's')
 			len += ft_sp_s(va_arg(args, char *));
 		else if (*str == 'p')
-			len += ft_sp_p(va_arg(args, char *));
+			len += ft_sp_p(va_arg(args, size_t));
 		else if (*str == 'd' || *str == 'i')
 			len += ft_sp_i_or_d(va_arg(args, int));
 		else if (*str == 'u')
@@ -64,4 +64,10 @@ int	ft_printf(const char *pstr, ...)
 	va_end(args);
 	free (str);
 	return (len);
+}  
+
+int	main()
+{
+	ft_printf("Vamos a probar: %d, %s", 42, "cadena");
+	return(0);
 }

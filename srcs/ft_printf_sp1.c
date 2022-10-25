@@ -79,26 +79,24 @@ int	ft_sp_x(char str, int digit)
 	return (i);
 }
 
-int	ft_sp_p(char *pointer)
+int	ft_sp_p(size_t pointer)
 {
 	char	*hexa;
-	int		*address;
+	char	*address;
 	int		i;
 
 	i = 0;
 	hexa = "0123456789ABCDEF";
-	while (*pointer)
-	{
-		*address = *pointer;
-		address++;
-		pointer++;
-	}
 	if ((void *)pointer == NULL)
 		return ((ft_putstr_fd("POINTER_NULL", 1)), 0);
-	while (*address)
+	i += write(1, "0x", 2);
+	while(pointer)
 	{
-		i += write(1, hexa[address], 1);
+		*address = hexa[pointer % 16];
+		pointer = pointer / 16;
 		address++;
 	}
+	while (*address)
+		i += write(1, address, ft_strlen(address));
 	return (i);
 }
