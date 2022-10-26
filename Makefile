@@ -7,26 +7,30 @@ INCLUDES	= -I ./includes
 RM			= rm -rf
 AR			= ar rcs
 SRCS		= ft_printf.c \
-				./srcs/ft_printf_sp1.c \
-				./srcs/ft_printf_sp2.c
+			./srcs/ft_sp_c.c \
+			./srcs/ft_sp_id.c \
+			./srcs/ft_sp_p.c \
+			./srcs/ft_sp_s.c \
+			./srcs/ft_sp_u.c \
+			./srcs/ft_sp_x.c
 
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(MAKE) -C ./libft
-	cp libft/libft.a $(NAME)
-	$(CC) $(CFLAGS) $(INCLUDES) $(SRCS)
-	$(AR) $(NAME) $(OBJS)
+	@make -C $(LIBFT)
+	@cp libft/libft.a $(NAME)
+	@$(CC) $(CFLAGS) $(INCLUDES) $(SRCS)
+	@$(AR) $(NAME) $(OBJS)
 
 clean:
-	$(MAKE) clean -C ./libft
-	$(RM) $(OBJS)
+	@$(RM) $(OBJS)
+	@make clean -C ./libft
 
 fclean: clean
-	$(MAKE) fclean -C ./libft
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
+	@$(RM) $(LIBFT)/libft.a
 
 re: fclean all
 
