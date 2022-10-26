@@ -12,14 +12,12 @@
 
 #include "./includes/ft_printf.h"
 
-int	ft_lfsp_str(char *str, va_list args)
+int	ft_lfsp_str(const char *str, va_list args)
 {
-	int	i;
 	int	len;
 
-	i = 0;
 	len = 0;
-	if (str[i + 1] == 'c')
+	if (str[i] == 'c')
 		len += ft_sp_c(va_arg(args, int));
 	else if (str[i] == 's')
 		len += ft_sp_s(va_arg(args, char *));
