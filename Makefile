@@ -1,4 +1,4 @@
-LIBFT		= ./libft/libft.a
+LIBFT		= libft
 N_TEMP		= temp.a
 NAME		= libftprintf.a
 CC			= gcc
@@ -20,13 +20,13 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@make -C $(LIBFT)
-	@cp libft/libft.a $(NAME)
-	@$(CC) $(CFLAGS) $(INCLUDES) $(SRCS)
+	@cp libft/libft.a .
+	@mv libft.a $(NAME)
 	@$(AR) $(NAME) $(OBJS)
 
 clean:
 	@$(RM) $(OBJS)
-	@make clean -C ./libft
+	make clean -C $(LIBFT)
 
 fclean: clean
 	@$(RM) $(NAME)

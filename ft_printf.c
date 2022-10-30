@@ -10,26 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/ft_printf.h"
+#include "includes/ft_printf.h"
 
-int	ft_lfsp_str(const char *str, va_list args)
+static int	ft_lfsp_str(const char str, va_list args)
 {
 	int	len;
 
 	len = 0;
-	if (str[i] == 'c')
+	if (str == 'c')
 		len += ft_sp_c(va_arg(args, int));
-	else if (str[i] == 's')
+	else if (str == 's')
 		len += ft_sp_s(va_arg(args, char *));
-	else if (str[i] == 'p')
+	else if (str == 'p')
 		len += ft_sp_p(va_arg(args, unsigned long long));
-	else if (str[i] == 'd' || str[i] == 'i')
+	else if (str == 'd' || str == 'i')
 		len += ft_sp_id(va_arg(args, int));
-	else if (str[i] == 'u')
+	else if (str == 'u')
 		len += ft_sp_u(va_arg(args, unsigned int));
-	else if (str[i] == 'x' || str[i] == 'X')
-		len += ft_sp_x(str[i], va_arg(args, unsigned int));
-	else if (str[i] == '%')
+	else if (str == 'x' || str == 'X')
+		len += ft_sp_x(str, va_arg(args, unsigned int));
+	else if (str == '%')
 		len += write(1, "%", 1);
 	return (len);
 }
@@ -45,14 +45,17 @@ int	ft_printf(const char *str, ...)
 	va_start(args, str);
 	while (str[i])
 	{
-		if (str[i++] == '%')
-			len += ft_lfsp_str(str[i], args);
+		if (str[i] == '%')
+		{
+			len += ft_lfsp_str(str[i + 1], args);
+			i += 2;
+		}
 		else
 		{
-			len += write(1, str, 1);
+			len += write(1, &str[i], 1);
 			i++;
 		}
 	}
 	va_end(args);
 	return (len);
-}  
+}

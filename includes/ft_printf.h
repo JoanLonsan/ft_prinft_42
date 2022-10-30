@@ -23,6 +23,6 @@ int		ft_sp_s(char *str);
 int		ft_sp_p(unsigned long long pointer);
 int		ft_sp_id(int digit);
 int		ft_sp_u(unsigned int digit);
-int	    ft_sp_x(const char x, unsigned int number);
+int		ft_sp_x(const char x, unsigned int number);
 
 #endif
